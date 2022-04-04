@@ -33,3 +33,13 @@ describe('additional passengers boarding', () => {
         expect(ship.passengers).toEqual(4);
     });
 });
+
+describe('checks if sailing', () => {
+    it('returns if sailing', () => {
+
+        const ship = new CruiseShip('Manchester');
+        ship.setSail();
+
+        expect(ship.startPort).toBeFalsy();
+    });
+});
