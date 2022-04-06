@@ -1,4 +1,4 @@
-const CruiseShip = require('../src/cruise-ship');
+const {CruiseShip, Port} = require('../src/cruise-ship');
 
 describe('constructor', () => {
     it('returns an object', () => {
@@ -15,13 +15,26 @@ describe('ship passengers', () => {
     });
 });
 
-describe('ship start port', () => {
-    it('returns ship start port', () => {
+describe('ship starting port', () => {
+    it('returns ship starting port', () => {
 
-        const ship = new CruiseShip('Manchester');
+        const port = new Port('Manchester')
+        const ship = new CruiseShip(port);
 
-        expect(ship.startPort).toEqual('Manchester');
+        expect(ship.dockedPort).toEqual(port);
     });
+
+    it('can dock at a different port', () => {
+
+        const dover = new Port('dover')
+        const ship = new CruiseShip(dover);
+
+        const calais = new Port('Calais');
+        ship.dock(calais);
+
+        expect(ship.dockedPort).toEqual(calais);
+    });
+
 });
 
 describe('additional passengers boarding', () => {
@@ -40,6 +53,7 @@ describe('checks if sailing', () => {
         const ship = new CruiseShip('Manchester');
         ship.setSail();
 
-        expect(ship.startPort).toBeFalsy();
+        expect(ship.dockedPort).toBeFalsy();
     });
 });
+

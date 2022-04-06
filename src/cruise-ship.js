@@ -1,5 +1,5 @@
 function CruiseShip(startPort) {
-    this.startPort = startPort
+    this.dockedPort = startPort;
     this.passengers = 0;
     }
 
@@ -8,8 +8,19 @@ CruiseShip.prototype.addPassengers = function (passengersBoarding) {
 }
 
 CruiseShip.prototype.setSail = function() {
-    this.startPort = false
+    this.dockedPort = false;
 }
     
-module.exports = CruiseShip;
+CruiseShip.prototype.dock = function (newPort) {
+    this.dockedPort = newPort;
+    }
+
+function Port(portName) {
+    this.name = portName;
+    }
+
+module.exports = {
+    CruiseShip,
+    Port
+};
     
