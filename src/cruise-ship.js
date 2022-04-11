@@ -3,6 +3,7 @@ function CruiseShip(itinerary) {
     this.dockedPort = itinerary.destinations[0];
     this.passengers = 0;
     this.previousPort = null;
+    this.dockedPort.addShip(this);
     }
 
 CruiseShip.prototype.addPassengers = function (passengersBoarding) {
@@ -26,17 +27,6 @@ CruiseShip.prototype.dock = function() {
     this.dockedPort = itinerary.destinations[previousPortIndex + 1];
     }
 
-function Port(portName) {
-    this.name = portName;
-    }
+module.exports = CruiseShip;
 
-function Itinerary(destinations) {
-    this.destinations = destinations;
-}
-
-module.exports = {
-    CruiseShip,
-    Port,
-    Itinerary,
-};
     

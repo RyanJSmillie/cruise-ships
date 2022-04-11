@@ -1,4 +1,6 @@
-const {CruiseShip, Port, Itinerary} = require('../src/cruise-ship');
+const CruiseShip = require('../src/cruise-ship');
+const Port = require('../src/port');
+const Itinerary = require('../src/itinerary');
 
 describe('constructor', () => {
     it('returns an object', () => {
@@ -14,9 +16,7 @@ describe('ship passengers', () => {
         const ship = new CruiseShip(itinerary);
         expect(ship.passengers).toEqual(0);
     });
-});
 
-describe('additional passengers boarding', () => {
     it('returns new number of passengers', () => {
         const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
         const ship = new CruiseShip(itinerary);
@@ -79,6 +79,7 @@ describe('ships dock status', () => {
     });
 
     it('can dock at a different port', () => {
+        const manchester = new Port('Manchester')
         const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
         const ship = new CruiseShip(itinerary);
         ship.setSail();
@@ -87,7 +88,13 @@ describe('ships dock status', () => {
         expect(ship.dockedPort).toEqual('Liverpool');
     });
 
+    it('gets added to port on instantiation', () => {
+        const ports = new Port('Manchester', 'Liverpool', 'Southampton')
+        const itinerary = new Itinerary([ports])
+        const ship = new CruiseShip(itinerary);
 
+        expect(ports.ships).toContain(ship);
+    });
 });
 
 
