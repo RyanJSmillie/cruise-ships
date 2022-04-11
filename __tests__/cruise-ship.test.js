@@ -4,7 +4,10 @@ const Itinerary = require('../src/itinerary');
 
 describe('constructor', () => {
     it('returns an object', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         expect(new CruiseShip(itinerary)).toBeInstanceOf(Object);
     });
@@ -12,13 +15,19 @@ describe('constructor', () => {
 
 describe('ship passengers', () => {
     it('returns ship passengers', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         expect(ship.passengers).toEqual(0);
     });
 
     it('returns new number of passengers', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         ship.addPassengers(4);
 
@@ -28,25 +37,34 @@ describe('ship passengers', () => {
 
 describe('checks setSail', () => {
     it('can set sail', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
-        const port = itinerary.destinations[0];
+        const startPort = itinerary.destinations[0];
         ship.setSail();
       
         expect(ship.docked).toBeFalsy();
-        expect(ship.previousPort).toBe(port);
+        expect(ship.previousPort).toBe(startPort);
       });
       
     it('sets previous port to current port', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         ship.setSail();
 
-        expect(ship.previousPort).toEqual('Manchester');
+        expect(ship.previousPort).toEqual(port1);
     });
 
     it('returns if sailing', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         ship.setSail();
 
@@ -54,9 +72,16 @@ describe('checks setSail', () => {
     });
 
     it('can\'t sail further than its itinerary', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
       
+        ship.setSail();
+        ship.dock();
+        ship.setSail();
+        ship.dock();
         ship.setSail();
         ship.dock();
       
@@ -66,34 +91,44 @@ describe('checks setSail', () => {
 
 describe('ships dock status', () => {
     it('returns ship starting port', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
-        expect(ship.dockedPort).toEqual('Manchester');
+        expect(ship.dockedPort).toEqual(port1);
     });
 
 
     it('initial previous port is null', () => {
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         expect(ship.previousPort).toEqual(null);
     });
 
     it('can dock at a different port', () => {
-        const manchester = new Port('Manchester')
-        const itinerary = new Itinerary(['Manchester', 'Liverpool', 'Southampton'])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
         ship.setSail();
         ship.dock();
 
-        expect(ship.dockedPort).toEqual('Liverpool');
+        expect(ship.dockedPort).toEqual(port2);
     });
 
     it('gets added to port on instantiation', () => {
-        const ports = new Port('Manchester', 'Liverpool', 'Southampton')
-        const itinerary = new Itinerary([ports])
+        const port1 = new Port('Manchester')
+        const port2 = new Port('Liverpool')
+        const port3 = new Port('Southampton')
+        const itinerary = new Itinerary([port1, port2, port3])
         const ship = new CruiseShip(itinerary);
 
-        expect(ports.ships).toContain(ship);
+        expect(port1.ships).toContain(ship);
     });
 });
 

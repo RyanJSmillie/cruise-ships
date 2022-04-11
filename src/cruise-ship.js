@@ -17,6 +17,7 @@ CruiseShip.prototype.setSail = function() {
         throw new Error('End of itinerary reached');
     }
     this.previousPort = this.dockedPort;
+    this.previousPort.removeShip(this);
     this.dockedPort = null;
 }
     
