@@ -26,6 +26,8 @@ CruiseShip.prototype.dock = function() {
     const previousPortIndex = itinerary.destinations.indexOf(this.previousPort);
     
     this.dockedPort = itinerary.destinations[previousPortIndex + 1];
+
+    this.dockedPort.addShip(this);
     }
 
 module.exports = CruiseShip;

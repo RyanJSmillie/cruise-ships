@@ -47,6 +47,7 @@ describe('checks setSail', () => {
       
         expect(ship.docked).toBeFalsy();
         expect(ship.previousPort).toBe(startPort);
+        expect(port1.ships).not.toContain(ship);
       });
       
     it('sets previous port to current port', () => {
@@ -117,6 +118,7 @@ describe('ships dock status', () => {
         ship.dock();
 
         expect(ship.dockedPort).toEqual(port2);
+        expect(port2.ships).toContain(ship)
     });
 
     it('gets added to port on instantiation', () => {
