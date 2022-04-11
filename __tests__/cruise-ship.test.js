@@ -82,8 +82,6 @@ describe('checks setSail', () => {
         ship.dock();
         ship.setSail();
         ship.dock();
-        ship.setSail();
-        ship.dock();
       
         expect(() => ship.setSail()).toThrowError('End of itinerary reached');
       });
