@@ -21,7 +21,7 @@ describe('Port Ships', () => {
     it('checks port can addShip', () => {
 
         const port = new Port('Manchester');
-        const ship = {};
+        const ship = jest.fn();
         port.addShip(ship)
 
         expect(port.ships).toContain(ship);
@@ -30,8 +30,8 @@ describe('Port Ships', () => {
     it('checks port can add multiple ships', () => {
 
         const port = new Port('Manchester');
-        const titanic = {}
-        const queenMary = {}
+        const titanic = jest.fn();
+        const queenMary = jest.fn();
 
         port.addShip(titanic);
         port.addShip(queenMary);
@@ -42,8 +42,8 @@ describe('Port Ships', () => {
     it('checks port can removeShip', () => {
 
         const port = new Port('Manchester');
-        const titanic = {}
-        const queenMary = {}
+        const titanic = jest.fn();
+        const queenMary = jest.fn();
 
         port.addShip(titanic);
         port.addShip(queenMary);
