@@ -6,6 +6,7 @@ describe('Ship', () => {
     let ship;
     let port1;
     let port2;
+    let port3;
     let itinerary;
 
     beforeEach(() => {
