@@ -40,7 +40,6 @@ CruiseShip.prototype.dock = function() {
 
 }());
 
-
 // module.exports = CruiseShip;
 
     

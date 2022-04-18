@@ -33,6 +33,7 @@ Controller.prototype.renderPorts = function renderPorts(ports){
       })
 };
 
+
 Controller.prototype.renderShip = function(ship) {
     const shipPortIndex = ship.itinerary.ports.indexOf(ship.dockedPort);
     const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
@@ -43,10 +44,12 @@ Controller.prototype.renderShip = function(ship) {
     shipElement.style.left = `${portElement.offsetLeft - 32}px`;
 }
 
+
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
   } else {
     window.Port = Controller;
   };
   
-// }());;;
+// }());
+
