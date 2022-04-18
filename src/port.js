@@ -3,7 +3,7 @@
 function Port(portName) {
     this.name = portName;
     this.ships = [];
-};
+}
 
 Port.prototype.addShip = function(ship) {
     const ships = this.ships;

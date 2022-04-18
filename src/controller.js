@@ -1,7 +1,12 @@
 // (function exportController () {
 
-function Controller () {
+function Controller (ship) {
+    this.ship = ship
     this.initialiseSea();
+
+    document.querySelector('#sailbutton').addEventListener('click', () => {
+        this.setSail();
+      });
 };
 
 Controller.prototype.initialiseSea = function initialiseSea() {
@@ -34,16 +39,21 @@ Controller.prototype.renderPorts = function renderPorts(ports){
 };
 
 
-Controller.prototype.renderShip = function(ship) {
+Controller.prototype.renderShip = function() {
+    const ship = this.ship
     const shipPortIndex = ship.itinerary.ports.indexOf(ship.dockedPort);
     const portElement = document.querySelector(`[data-port-index='${shipPortIndex}']`);
     const shipElement = document.querySelector('#ship');
-    shipElement.style.top = `${portElement.offsetTop}px`;
-    shipElement.style.left = `${portElement.offsetLeft}px`; 
     shipElement.style.top = `${portElement.offsetTop + 32}px`;
     shipElement.style.left = `${portElement.offsetLeft - 32}px`;
-}
 
+    shipElement.appendChild();
+
+};
+
+Controller.prototype.setSail = function() {
+
+};
 
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = Controller;
@@ -52,4 +62,3 @@ if (typeof module !== 'undefined' && module.exports) {
   };
   
 // }());
-
