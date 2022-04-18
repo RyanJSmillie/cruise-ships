@@ -11,14 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
+
+<header>
+    <div id="HUD"></div>
+</header>
+
 <body>
     <div id="viewport">
-        <div id="ports">
-        </div>
-
-        <div id="ship">
-        </div>
-
+        <div id="ports"></div>
+        <div id="ship"></div>
         <button id="sailbutton">Set Sail!</button>
     </div>
 
@@ -39,6 +40,8 @@
 
         controller.renderPorts(itinerary.ports);
         controller.renderShip();
+        controller.renderMessage(message);
+        controller.HUD(message);
 
     </script>
 

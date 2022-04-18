@@ -35,7 +35,7 @@ CruiseShip.prototype.dock = function() {
     if (typeof module !== 'undefined' && module.exports) {
         module.exports = CruiseShip;
       } else {
-        window.Port = CruiseShip;
+        window.CruiseShip = CruiseShip;
       }
 
 }());

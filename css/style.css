@@ -3,13 +3,20 @@ html, body {
 }
 
 body {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 1fr 20fr;
     background-color: black;
     justify-content: center;
     align-items: center;
 }
 
+header {
+    height: 30%;
+}
+
 #viewport {
+    grid-row: 2/3;
     width: 640px;
     height: 256px;
     position: relative;
@@ -54,4 +61,22 @@ body {
     background-color: #d8040f;
     border-bottom-width: 0;
     padding-top: 14px;
+  }
+
+  #message {
+    padding: 16px;
+    font-family: 'Press Start 2P', cursive;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    border-top: 3px solid black;
+    background-color: white;
+  }
+
+  #HUD {
+    grid-row: 1/2;
+    height: auto;
+    text-align: right;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
   }

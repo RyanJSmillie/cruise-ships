@@ -1,4 +1,4 @@
-// (function exportPort() {
+(function exportPort() {
 
 function Port(portName) {
     this.name = portName;
@@ -23,7 +23,7 @@ if (typeof module !== 'undefined' && module.exports) {
     window.Port = Port;
   };
 
-// }());
+}());
 
 
 // module.exports = Port;
