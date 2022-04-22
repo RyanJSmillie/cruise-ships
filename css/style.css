@@ -4,22 +4,19 @@ html, body {
 
 body {
     display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 1fr 20fr;
+    grid-template-columns: 6.5fr 10fr 5fr;
+    grid-template-rows: 9em 50em;
     background-color: black;
     justify-content: center;
     align-items: center;
 }
 
-header {
-    height: 30%;
-}
-
 #viewport {
     grid-row: 2/3;
+    grid-column: 2/3;
     width: 640px;
     height: 256px;
-    position: relative;
+    position:relative;
     overflow-x: auto;
     background-image: url('../images/water0.png');
 }
@@ -75,8 +72,42 @@ header {
 
   #HUD {
     grid-row: 1/2;
+    grid-column: 2/4;
+    padding: 30px;
     height: auto;
     text-align: right;
     font-family: 'Press Start 2P', cursive;
     color: white;
+  }
+
+  #addPort {
+    grid-row: 1/2;
+    grid-column: 1/2;
+    font-size: 13px;
+    width: 200px;
+    margin: 20px;
+    padding: 20px;
+    border-width: 5px;
+    border-style: solid double;
+    border-color: black;
+    background-color: white;
+    height: auto;
+    text-align: left;
+    font-family: 'Press Start 2P', cursive;
+    color: black;
+  }
+
+  #portButton {
+      background-color: #FB3640;
+      border: 0;
+      border-bottom: 4px solid #d8040f;
+      color: white;
+      height: 25px;
+      border: none;
+  }
+
+  #portButton:focus {
+    background-color: #d8040f;
+    border-bottom-width: 0;
+    padding-top: 3px;
   }

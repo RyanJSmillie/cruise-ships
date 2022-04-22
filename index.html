@@ -12,11 +12,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
-<header>
-    <div id="HUD"></div>
-</header>
-
 <body>
+    <div id="HUD"></div>
+    <form id="addPort" onsubmit="return false">
+        Add Port </p> 
+        <input type = "text" name = "Port Name" placeholder="Port Name" id="portName" style="width: 160px;"/>  </p>
+        <button onclick="sendPort()" id="portButton">Add</button>   
+    </form>
+
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
@@ -29,12 +32,27 @@
     <script src="src/cruise-ship.js"></script>
 
     <script>
-        const itinerary = new Itinerary([
-            new Port('New York City'),
-            new Port('Grand Turk'),
-            new Port('San Juan'),
-            new Port('Amber Cove')
-        ]);
+        let newItinerary = []
+        const sendPort = () => {
+
+            let portName = document.getElementById("portName").value;
+
+            newItinerary.push (new Port(portName));
+            sendPort.addEventListener("click", () => {} )
+            console.log (newItinerary)
+        }
+
+        const itinerary = new Itinerary( 
+            
+        newItinerary
+            
+        // [
+        //     new Port('New York City'),
+        //     new Port('Grand Turk'),
+        //     new Port('San Juan'),
+        //     new Port('Amber Cove')
+        // ]
+        );
         const ship = new CruiseShip(itinerary);
         const controller = new Controller(ship);
 
