@@ -75,12 +75,14 @@ Controller.prototype.setSail = function() {
       shipElement.style.left = `${shipLeft + 1}px`;
     }, 20);
 
-    if (!nextPortElement) {
-        HUDElement.innerHTML = (`Current Port: ${ship.itinerary.ports[currentPortIndex + 1].name} </p> Next Port: End of the line!`)
-    }
+    if ([currentPortIndex + 3] > ship.itinerary.ports.length) {
+      const HUDElement = document.querySelector('#HUD');
+      HUDElement.innerHTML = (`Current Port: ${ship.itinerary.ports[currentPortIndex + 1].name} </p> Next Port: End of the line!`)
+    } else {
     const HUDElement = document.querySelector('#HUD');
     HUDElement.innerHTML = (`Current Port: ${ship.itinerary.ports[currentPortIndex + 1].name} </p> Next Port: ${ship.itinerary.ports[currentPortIndex + 2].name}`)
-};
+    }
+  };
 
 Controller.prototype.renderMessage = function (message) {
     const messageElement = document.createElement('div');
