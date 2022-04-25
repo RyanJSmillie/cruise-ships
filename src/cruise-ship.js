@@ -5,7 +5,7 @@ function CruiseShip(itinerary) {
     this.dockedPort = itinerary.ports[0];
     this.passengers = 0;
     this.previousPort = null;
-    this.dockedPort.addShip(this);
+    // this.dockedPort.addShip(this);
     }
 
 CruiseShip.prototype.addPassengers = function (passengersBoarding) {

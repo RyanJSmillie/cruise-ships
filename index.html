@@ -13,6 +13,7 @@
 </head>
 
 <body>
+
     <div id="HUD"></div>
     <form id="addPort" onsubmit="return false">
         Add Port </p> 
@@ -26,6 +27,7 @@
         <button id="sailbutton">Set Sail!</button>
     </div>
 
+    
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
     <script src="src/itinerary.js"></script>
@@ -33,35 +35,31 @@
 
     <script>
         let newItinerary = []
+
+        let itinerary = new Itinerary(newItinerary);
+        let ship = new CruiseShip(itinerary);
+        let controller = new Controller(ship);
+
+
+
         const sendPort = () => {
+        let portName = document.getElementById("portName").value;
 
-            let portName = document.getElementById("portName").value;
+        let newPort2 = new Port(portName);
 
-            newItinerary.push (new Port(portName));
-            sendPort.addEventListener("click", () => {} )
-            console.log (newItinerary)
-        }
-
-        const itinerary = new Itinerary( 
-            
-        newItinerary
-            
-        // [
-        //     new Port('New York City'),
-        //     new Port('Grand Turk'),
-        //     new Port('San Juan'),
-        //     new Port('Amber Cove')
-        // ]
-        );
-        const ship = new CruiseShip(itinerary);
-        const controller = new Controller(ship);
+        newItinerary.push (newPort2);
+        if (!ship.dockedPort) {
+            ship.dockedPort = newPort2
+            newPort2.addShip(ship);
+        } 
 
         controller.renderPorts(itinerary.ports);
         controller.renderShip();
+        const message = `You have added ${portName} as a destination!`
         controller.renderMessage(message);
-        controller.HUD(message);
+        // controller.HUD(message);
+        }
 
     </script>
-
 </body>
 </html>
