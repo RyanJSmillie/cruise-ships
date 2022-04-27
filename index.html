@@ -14,6 +14,7 @@
 
 <body>
 
+    <div id="notice">Please add 2 (or more!) ports</div>
     <div id="HUD"></div>
     <form id="addPort" onsubmit="return false">
         Add Port </p> 
@@ -53,12 +54,29 @@
             newPort2.addShip(ship);
         } 
 
+        if (ship.itinerary.ports.length === 1) {
+            const noteElement = document.querySelector('#notice');
+            noteElement.innerHTML = 'Please add 1 (or more!) ports'
+        } else if (ship.itinerary.ports.length === 2) {
+            const noteElement = document.querySelector('#notice');
+            noteElement.remove();
+        }
+
+        const HUD = document.querySelector('#HUD')
+        HUD.innerHTML = ''
+
+        // const sailButton = document.querySelector('#sailbutton')
+        // sailButton.innerHTML = ''
+        // sailButton.innerHTML = 'Set Sail!'
+
         controller.renderPorts(itinerary.ports);
         controller.renderShip();
         const message = `You have added ${portName} as a destination!`
         controller.renderMessage(message);
-        // controller.HUD(message);
+        controller.HUD(message);
         }
+
+
 
     </script>
 </body>

@@ -7,10 +7,6 @@ function Controller (ship) {
     document.querySelector('#sailbutton').addEventListener('click', () => {
         this.setSail();
       });
-
-      const currentPortIndex = ship.itinerary.ports.indexOf(ship.dockedPort);
-      const HUDElement = document.querySelector('#HUD');
-      // HUDElement.innerHTML = (`Current Port: ${ship.itinerary.ports[currentPortIndex].name} </p> Next Port: ${ship.itinerary.ports[currentPortIndex + 1].name}`)
 };
 
 Controller.prototype.initialiseSea = function initialiseSea() {
@@ -103,10 +99,19 @@ Controller.prototype.renderMessage = function (message) {
 }
 
 Controller.prototype.HUD = function (message) {
+    const ship = this.ship;
     const HUDElement = document.createElement('div');
     HUDElement.id = 'HUD';
-    message = (`Current Port: ${ship.dockedPort.name} </p> Next Port: ${ship.dockedPort.name + 1}`)
-    HUDElement.innerHTML = message
+    const currentPortIndex = ship.itinerary.ports.indexOf(ship.dockedPort);
+    const nextPortIndex = currentPortIndex + 1;
+
+    if (this.ship.itinerary.ports.length === 1) {
+      message = (`Current Port: ${ship.itinerary.ports[currentPortIndex].name} </p> Next Port: - `)
+      HUDElement.innerHTML = message
+    } else {
+      message = (`Current Port: ${ship.itinerary.ports[currentPortIndex].name} </p> Next Port: ${ship.itinerary.ports[currentPortIndex + 1].name}`)
+      HUDElement.innerHTML = message
+    }
 
     const HUD = document.querySelector('#HUD');
     HUD.appendChild(HUDElement);
