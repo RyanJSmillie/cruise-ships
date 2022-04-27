@@ -73,7 +73,13 @@ Controller.prototype.setSail = function() {
         this.renderMessage(`We have arrived in ${ship.dockedPort.name}`);
         clearInterval(sailInterval);
       }
-      shipElement.style.left = `${shipLeft + 1}px`;
+      shipElement.style.left = `${shipLeft + 2}px`;
+      const viewport = document.querySelector('#viewport');
+      viewport.scrollTo({
+        top: 0,
+        left: shipLeft - 32,
+        behavior: 'auto'
+      });
     }, 20);
 
     if ([currentPortIndex + 3] > ship.itinerary.ports.length) {
@@ -86,16 +92,15 @@ Controller.prototype.setSail = function() {
   };
 
 Controller.prototype.renderMessage = function (message) {
-    const messageElement = document.createElement('div');
-    messageElement.id = 'message';
+    const messageElement = document.querySelector('#messagebox')
     messageElement.innerHTML = message;
 
-    const viewport = document.querySelector('#viewport');
-    viewport.appendChild(messageElement);
+    // const viewport = document.querySelector('#messagebox');
+    // viewport.appendChild(messageElement);
 
-    setTimeout(() => {
-        viewport.removeChild(messageElement);
-      }, 2000);
+    // setTimeout(() => {
+    //     viewport.removeChild(messageElement);
+    //   }, 2000);
 }
 
 Controller.prototype.HUD = function (message) {

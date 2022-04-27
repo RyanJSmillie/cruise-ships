@@ -5,10 +5,14 @@ html, body {
 body {
     display: grid;
     grid-template-columns: 20% 60% 20%;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 20% 40% 30% 10%;
     background-color: black;
     justify-content: center;
     align-items: center;
+}
+
+* {
+  font-family: 'Press Start 2P', cursive;
 }
 
 #viewport {
@@ -34,7 +38,6 @@ body {
     width: 64px;
     height: 32px;
     background-image: url('../images/port.png');
-    font-family: 'Press Start 2P', cursive;
     color: white;
     text-align: center;
     font-size: 7px;
@@ -47,46 +50,16 @@ body {
     position: absolute;
 }
 
-#sailbutton {
-    border: 0;
-    background-color: #FB3640;
-    border-bottom: 4px solid #d8040f;
-    color: white;
-    font-family: inherit;
-    padding: 10px 20px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    font-family: 'Press Start 2P', cursive;
-}
-
-#sailbutton:focus {
-    background-color: #d8040f;
-    border-bottom-width: 0;
-    padding-top: 14px;
-  }
-
-  #message {
+  /* #message {
     padding: 16px;
-    font-family: 'Press Start 2P', cursive;
     position: absolute;
+    left: 0;
+    right: 0;
     width: 100%;
     bottom: 0;
     border-top: 3px solid black;
     background-color: white;
-  }
-
-  #HUD {
-    grid-row: 1/2;
-    grid-column: 2/4;
-    padding: 30px;
-    height: auto;
-    width: auto;
-    text-align: right;
-    font-family: 'Press Start 2P', cursive;
-    color: white;
-  }
+  } */
 
   #addPort {
     grid-row: 1/2;
@@ -101,24 +74,23 @@ body {
     background-color: white;
     height: auto;
     text-align: left;
-    font-family: 'Press Start 2P', cursive;
     color: black;
   }
 
   #portButton {
-      background-color: #FB3640;
-      border: 0;
-      border-bottom: 4px solid #d8040f;
-      color: white;
-      height: 25px;
-      border: none;
-  }
+    background-color: #FB3640;
+    border: 0;
+    border-bottom: 4px solid #d8040f;
+    color: white;
+    height: 25px;
+    border: none;
+}
 
-  #portButton:focus {
-    background-color: #d8040f;
-    border-bottom-width: 0;
-    padding-top: 3px;
-  }
+#portButton:focus {
+  background-color: #d8040f;
+  border-bottom-width: 0;
+  padding-top: 3px;
+}
 
   #notice {
     grid-row: 1/2;
@@ -129,6 +101,50 @@ body {
     width: auto;
     text-align: center;
     justify-content: center;
-    font-family: 'Press Start 2P', cursive;
     color: white;
+  }
+
+  #HUD {
+    grid-row: 1/2;
+    grid-column: 2/4;
+    padding: 30px;
+    height: auto;
+    width: auto;
+    text-align: right;
+    color: white;
+  }
+
+  #messagebox {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    height: 3em;
+    border-width: 7px;
+    border-style: solid double;
+    border-color: black;
+    background-color: white;
+    text-align: center;
+    align-content: center;
+    margin-bottom: 10px;
+    padding: 5px;
+    color: black;
+  }
+
+  #sailbutton {
+    grid-row: 4/5;
+    grid-column: 2/3;
+    border: 0;
+    background-color: #FB3640;
+    border-bottom: 4px solid #d8040f;
+    color: white;
+    padding: 10px 20px;
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+}
+
+#sailbutton:focus {
+    background-color: #d8040f;
+    border-bottom-width: 0;
+    padding-top: 14px;
   }

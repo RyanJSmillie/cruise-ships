@@ -14,9 +14,9 @@
 
 <body>
 
-    <div id="notice">Please add 2 (or more!) ports</div>
-    <div id="HUD"></div>
-    <form id="addPort" onsubmit="return false">
+    <div id="notice" class="header">Please add 2 (or more!) ports</div>
+    <div id="HUD" class="header"></div>
+    <form id="addPort" class="header" onsubmit="return false">
         Add Port </p> 
         <input type = "text" name = "Port Name" placeholder="Port Name" id="portName" style="width: 160px;"/>  </p>
         <button onclick="sendPort()" id="portButton">Add</button>   
@@ -25,9 +25,12 @@
     <div id="viewport">
         <div id="ports"></div>
         <div id="ship"></div>
-        <button id="sailbutton">Set Sail!</button>
+        <!-- <button id="sailbutton">Set Sail!</button> -->
     </div>
 
+    <div id="messagebox"></div>
+
+        <button id="sailbutton">Set Sail!</button>
     
     <script src="src/controller.js"></script>
     <script src="src/port.js"></script>
