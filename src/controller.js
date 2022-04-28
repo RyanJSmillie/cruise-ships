@@ -73,7 +73,7 @@ Controller.prototype.setSail = function() {
         this.renderMessage(`We have arrived in ${ship.dockedPort.name}`);
         clearInterval(sailInterval);
       }
-      shipElement.style.left = `${shipLeft + 2}px`;
+      shipElement.style.left = `${shipLeft + 1}px`;
       const viewport = document.querySelector('#viewport');
       viewport.scrollTo({
         top: 0,

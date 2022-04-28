@@ -19,7 +19,7 @@
     <form id="addPort" class="header" onsubmit="return false">
         Add Port </p> 
         <input type = "text" name = "Port Name" placeholder="Port Name" id="portName" style="width: 160px;"/>  </p>
-        <button onclick="sendPort()" id="portButton">Add</button>   
+        <button onclick="sendPort()" id="portButton">Add</button> 
     </form>
 
     <div id="viewport">
@@ -44,8 +44,6 @@
         let ship = new CruiseShip(itinerary);
         let controller = new Controller(ship);
 
-
-
         const sendPort = () => {
         let portName = document.getElementById("portName").value;
 
@@ -68,19 +66,12 @@
         const HUD = document.querySelector('#HUD')
         HUD.innerHTML = ''
 
-        // const sailButton = document.querySelector('#sailbutton')
-        // sailButton.innerHTML = ''
-        // sailButton.innerHTML = 'Set Sail!'
-
         controller.renderPorts(itinerary.ports);
         controller.renderShip();
         const message = `You have added ${portName} as a destination!`
         controller.renderMessage(message);
         controller.HUD(message);
         }
-
-
-
     </script>
 </body>
 </html>
